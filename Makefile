@@ -52,7 +52,7 @@ seed-dragons:
 scan-dragons:
 	node lab/solution/scan_dragons.js
 
-data/denomalize-dragon-game.csv:
+data/denomalize-dragon-game.csv: $(wildcard lab/resources/*.json)
 	./scripts/denomalize-dragon-game.sh
 
 denormalized-view: data/denomalize-dragon-game.csv

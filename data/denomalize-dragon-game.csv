@@ -1,3 +1,4 @@
 current_endurance_int,current_will_not_fight_credits_int,dragon_name_str,game_id_str,damage_int,family_str,location_city_str,location_country_str,location_neighborhood_str,location_state_str,protection_int,breath_attack_str,damage_modifier_int,protection_modifier_int,extra_damage_int,range_int
+1,1,Atlas,1234567890abcdef,9,red,anchorage,usa,w fireweed ln,alaska,7,fire,2,-2,8,4
 3,2,Cassidiuma,56syjdh8756,7,green,colby,usa,poplar st,kansas,10,acid,-2,2,3,5
 10,10,Midnight,loremipsum,8,black,cupertino,usa,pear tree ln,california,8,acid,0,0,3,5
