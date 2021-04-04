@@ -43,26 +43,38 @@ get-all-labs:
 
 setup: $(LAB_TARGET)
 
-run-dynamodb: ## get-tools
+run-aws: ## get-tools
 	docker-compose up
+
+list-tables: # 8000
+	aws dynamodb --endpoint-url http://localhost:8000 list-tables
+
+list-tables-lcl: # WIP 4566
+	awslocal dynamodb list-tables
 
 check-setup:
 	npx ts-node src/index.ts
 
-list-tables:
-	aws dynamodb list-tables --endpoint-url http://localhost:8000
-
 create-multiple-tables:
 	node lab3/solution/create_multiple_tables.js
+	$(MAKE) list-tables
 
-seed-dragons:
+seed-dragons: # create-multiple-tables
 	node lab3/solution/seed_dragons.js
 
-scan-dragons:
+scan-dragons: # seed-dragons
 	node lab3/solution/scan_dragons.js
 
-data/denomalize-dragon-game.csv: $(wildcard lab3/resources/*.json)
-	./scripts/denomalize-dragon-game.sh
+data/denomalize-dragon-game.csv: $(wildcard lab3/resources/*.json) scripts/denomalize-dragon-game.sh
+	@./scripts/denomalize-dragon-game.sh
 
 denormalized-view: data/denomalize-dragon-game.csv
 	@xsv stats data/denomalize-dragon-game.csv | xsv select field,type,min | xsv table
+
+# Additional support for previous labs
+
+lab1.list-tables:
+	$(MAKE) list-tables
+
+lab1.create-table:
+	./scripts/lab1-create-table-music.sh

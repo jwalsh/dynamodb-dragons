@@ -1,4 +1,5 @@
 #/bin/sh
+# Maps JSON loader files to CSV and flatten all data
 
 TMP=data
 LAB=lab3/resources

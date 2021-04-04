@@ -1,7 +1,7 @@
 const AWS = require("aws-sdk"),
       dynamodb = new AWS.DynamoDB({
           apiVersion: "2012-08-10",
-          endpoint: "http://localhost:8000",
+          endpoint: "http://localhost:4566",
           region: "us-east-1"
       });
 
