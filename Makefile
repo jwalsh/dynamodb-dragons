@@ -81,6 +81,9 @@ lab3.seed-dragons: # create-multiple-tables
 lab3.scan-dragons: # seed-dragons
 	node lab3/solution/scan_dragons.js
 
+lab3.query-dragon-stats:
+	@./scripts/query-dragon-stats.sh | jq
+
 data/denomalize-dragon-game.csv: $(wildcard lab3/resources/*.json) scripts/denomalize-dragon-game.sh
 	@./scripts/denomalize-dragon-game.sh
 
