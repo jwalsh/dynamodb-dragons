@@ -136,7 +136,7 @@ The determination of the hash and sort keys will be driven by the following:
    : "dragon_name_str"
    : "game_id_str"
 
- * Queries
+* Queries
 
    #+begin_src sql
 -- Show all dragons in the game
