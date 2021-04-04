@@ -2,6 +2,7 @@ LAB_TARGET = lab3.zip
 
 .PHONY: init run-dynamodb
 
+# Tools
 init:
 	$(MAKE) get-poetry
 	pip3 install awscli awscli-local
@@ -27,6 +28,8 @@ uninstall-docker:
 get-gpg: get-tools
 	brew install --cask gpg-suite-no-mail
 
+
+# Coursera
 $(LAB_TARGET):
 	wget \
 	https://s3.amazonaws.com/awsu-hosting/edx_dynamo/c9/dynamo-seed/lab3.zip
@@ -40,9 +43,10 @@ get-all-labs:
 	wget \
 	https://s3.amazonaws.com/awsu-hosting/edx_dynamo/c9/dynamo-seed/lab3.zip
 
-
 setup: $(LAB_TARGET)
 
+
+# Local DynamoDB
 run-aws: ## get-tools
 	docker-compose up
 
@@ -55,14 +59,16 @@ list-tables-lcl: # WIP 4566
 check-setup:
 	npx ts-node src/index.ts
 
-create-multiple-tables:
+
+# Lab 3: Dragons
+lab3.create-multiple-tables:
 	node lab3/solution/create_multiple_tables.js
 	$(MAKE) list-tables
 
-seed-dragons: # create-multiple-tables
+lab3.seed-dragons: # create-multiple-tables
 	node lab3/solution/seed_dragons.js
 
-scan-dragons: # seed-dragons
+lab3.scan-dragons: # seed-dragons
 	node lab3/solution/scan_dragons.js
 
 data/denomalize-dragon-game.csv: $(wildcard lab3/resources/*.json) scripts/denomalize-dragon-game.sh
@@ -71,8 +77,8 @@ data/denomalize-dragon-game.csv: $(wildcard lab3/resources/*.json) scripts/denom
 denormalized-view: data/denomalize-dragon-game.csv
 	@xsv stats data/denomalize-dragon-game.csv | xsv select field,type,min | xsv table
 
-# Additional support for previous labs
 
+# Other labs
 lab1.list-tables:
 	$(MAKE) list-tables
 
