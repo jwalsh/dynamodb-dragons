@@ -37,14 +37,17 @@ setup: $(LAB_TARGET)
 run-dynamodb: ## get-tools
 	docker-compose up
 
+check-setup:
+	npx ts-node src/index.ts
+
 list-tables:
 	aws dynamodb list-tables --endpoint-url http://localhost:8000
 
 create-multiple-tables:
-	node lib/solution/create_multiple_tables.js
+	node lab/solution/create_multiple_tables.js
 
 seed-dragons:
-	node lib/solution/seed_dragons.js
+	node lab/solution/seed_dragons.js
 
 scan-dragons:
-	node lib/solution/scan_dragons.js
+	node lab/solution/scan_dragons.js

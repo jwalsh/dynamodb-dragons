@@ -1,0 +1,64 @@
+* Background
+
+  This is lab 3 for dynamodb-nosql-database-driven-apps .
+
+* Model
+
+  #+begin_src dot
+
+  #+end_src
+* Usage
+
+The determination of the hash and sort keys will be driven by the following:
+
+- Get Dragon data (Family and Attack)
+- Get Game data
+
+** Dragon
+
+   #+begin_src sh
+     jq '.[0]|keys[]' lab/resources/dragon_stats_one.json
+   #+end_src
+
+   #+RESULTS:
+   | damage_int                |
+   | description_str           |
+   | dragon_name_str           |
+   | family_str                |
+   | location_city_str         |
+   | location_country_str      |
+   | location_neighborhood_str |
+   | location_state_str        |
+   | protection_int            |
+
+** Family
+
+   #+begin_src sh
+     jq '.[0]|keys[]' lab/resources/dragon_family.json
+   #+end_src
+
+   #+RESULTS:
+   | breath_attack_str       |
+   | damage_modifier_int     |
+   | description_str         |
+   | family_str              |
+   | protection_modifier_int |
+
+** Attack
+
+   #+begin_src sh
+     jq '.[0]|keys[]' lab/resources/dragon_bonus_attack.json
+   #+end_src
+
+   #+RESULTS:
+   | breath_attack_str |
+   | description_str   |
+   | extra_damage_int  |
+   | range_int         |
+
+** Game
+
+* Resources
+
+- https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html
+- https://aws.amazon.com/blogs/developer/first-class-typescript-support-in-modular-aws-sdk-for-javascript/

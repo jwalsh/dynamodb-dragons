@@ -17,7 +17,7 @@ var
     AWS = require("aws-sdk"),
     DDB = new AWS.DynamoDB({
         apiVersion: "2012-08-10",
-        endpoint: 'http://localhost:8000',
+        endpoint: "http://localhost:8000",
         region: "us-east-1"
     });
 

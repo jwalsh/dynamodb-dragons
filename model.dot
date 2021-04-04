@@ -1,0 +1,37 @@
+digraph G {
+
+subgraph cluster_current_power {
+        "current_endurance_int"
+        "current_will_not_fight_credits_int"
+        "dragon_name_str"
+        "game_id_str"
+}
+
+subgraph cluster_bonus_attack {
+        "breath_attack_str"
+        "description_str"
+        "extra_damage_int"
+        "range_int"
+}
+
+subgraph cluster_family {
+        "breath_attack_str"
+        "damage_modifier_int"
+        "description_str"
+        "family_str"
+        "protection_modifier_int"
+}
+
+subgraph cluster_stats {
+        "damage_int"
+        "description_str"
+        "dragon_name_str"
+        "family_str"
+        "location_city_str"
+        "location_country_str"
+        "location_neighborhood_str"
+        "location_state_str"
+        "protection_int"
+}
+
+}
