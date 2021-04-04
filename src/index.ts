@@ -14,5 +14,21 @@ const client = new DynamoDB({
 console.log(client.config.endpoint());
 
 client.listTables({}, (err, data) => {
+    console.log('listTables')
+    console.log(data);
+})
+
+var params = {
+    ExpressionAttributeValues: {
+        ":name": {
+            S: "Atlas"
+        }
+    },
+    KeyConditionExpression: "dragon_name = :name",
+    TableName: "dragon_stats"
+};
+
+client.query(params, (err, data) => {
+    console.log('query: Atlas')
     console.log(data);
 })
