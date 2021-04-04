@@ -1,0 +1,5 @@
+breath_attack_str,damage_modifier_int,family_str,protection_modifier_int
+acid,-2,green,2
+fire,2,red,-2
+water,1,blue,-1
+acid,0,black,0

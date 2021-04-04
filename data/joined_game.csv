@@ -1,0 +1,2 @@
+current_endurance_int,current_will_not_fight_credits_int,dragon_name_str,game_id_str,damage_int,family_str,location_city_str,location_country_str,location_neighborhood_str,location_state_str,protection_int,breath_attack_str,damage_modifier_int,protection_modifier_int,extra_damage_int,range_int
+3,2,Cassidiuma,56syjdh8756,7,green,colby,usa,poplar st,kansas,10,acid,-2,2,3,5

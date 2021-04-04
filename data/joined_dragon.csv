@@ -1,0 +1,26 @@
+damage_int,dragon_name_str,family_str,location_city_str,location_country_str,location_neighborhood_str,location_state_str,protection_int,breath_attack_str,damage_modifier_int,protection_modifier_int,extra_damage_int,range_int
+9,Atlas,red,anchorage,usa,w fireweed ln,alaska,7,fire,2,-2,8,4
+4,Bahamethut,black,las vegas,usa,shore breeze dr,nevada,3,acid,0,0,3,5
+6,Frealu,blue,mesa,usa,e adobe st,arizona,6,water,1,-1,1,10
+2,Pradumo,green,sterling,usa,broadway,colorado,4,acid,-2,2,3,5
+9,Tagnaurak,red,las vegas,usa,westcliff dr,nevada,3,fire,2,-2,8,4
+8,Midnight,black,cupertino,usa,pear tree ln,california,8,acid,0,0,3,5
+5,Longlu,blue,hilo,usa,mona loop,hawaii,8,water,1,-1,1,10
+4,Dexler,green,lexington,usa,bellcastle rd,kentucky,2,acid,-2,2,3,5
+2,Fireball,red,bangor,usa,stillwater ave,maine,6,fire,2,-2,8,4
+4,Shadow,black,eden,usa,church st,mississsippi,4,acid,0,0,3,5
+4,Herma,blue,twin falls,usa,applewood dr,idaho,8,water,1,-1,1,10
+6,Samurilio,green,las vegas,usa,harmony st,nevada,10,acid,-2,2,3,5
+4,Firestorm,red,tempe,usa,e laguna dr,arizona,9,fire,2,-2,8,4
+9,Sonic,black,flagstaff,usa,lake mary rd,arizona,8,acid,0,0,3,5
+4,Hydraysha,blue,san diego,usa,hazard way,california,4,water,1,-1,1,10
+7,Cassidiuma,green,colby,usa,poplar st,kansas,10,acid,-2,2,3,5
+8,Isilier,red,dover,usa,shank rd,delaware,7,fire,2,-2,8,4
+4,Sheblonguh,black,de moines,usa,maple st,iowa,6,acid,0,0,3,5
+9,Frost,blue,las vegas,usa,hills creek dr,nevada,3,water,1,-1,1,10
+7,Ragnorl,green,chandler,usa,w german rd,arizona,7,acid,-2,2,3,5
+9,Eislex,red,st. cloud,usa,breckenridge ave,minnesota,3,fire,2,-2,8,4
+8,Smolder,black,tampa,usa,ashley st,florida,4,acid,0,0,3,5
+4,Protheus,blue,brandon,usa,e morgan st,florida,4,water,1,-1,1,10
+7,Shulmi,green,denver,usa,colfax,colorado,10,acid,-2,2,3,5
+6,Xanya,red,las vegas,usa,e clark ave,nevada,6,fire,2,-2,8,4

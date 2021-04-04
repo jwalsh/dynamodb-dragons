@@ -1,0 +1,6 @@
+breath_attack_str,extra_damage_int,range_int
+acid,3,5
+electricty,3,5
+water,1,10
+fear,0,4
+fire,8,4

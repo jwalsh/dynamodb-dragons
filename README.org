@@ -2,6 +2,31 @@
 
   This is lab 3 for dynamodb-nosql-database-driven-apps .
 
+* Data
+
+  #+begin_src sh
+    make denormalized-view
+  #+end_src
+
+  #+RESULTS:
+  | field                              | type    | min         |    |
+  | current_endurance_int              | Integer | 3           |    |
+  | current_will_not_fight_credits_int | Integer | 2           |    |
+  | dragon_name_str                    | Unicode | Cassidiuma  |    |
+  | game_id_str                        | Unicode | 56syjdh8756 |    |
+  | damage_int                         | Integer | 7           |    |
+  | family_str                         | Unicode | green       |    |
+  | location_city_str                  | Unicode | colby       |    |
+  | location_country_str               | Unicode | usa         |    |
+  | location_neighborhood_str          | Unicode | poplar      | st |
+  | location_state_str                 | Unicode | kansas      |    |
+  | protection_int                     | Integer | 10          |    |
+  | breath_attack_str                  | Unicode | acid        |    |
+  | damage_modifier_int                | Integer | -2          |    |
+  | protection_modifier_int            | Integer | 2           |    |
+  | extra_damage_int                   | Integer | 3           |    |
+  | range_int                          | Integer | 5           |    |
+
 * Model
 
   #+begin_src dot :cache yes :file model.png :exports results

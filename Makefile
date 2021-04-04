@@ -51,3 +51,9 @@ seed-dragons:
 
 scan-dragons:
 	node lab/solution/scan_dragons.js
+
+data/joined_game.csv:
+	./scripts/denomalize-dragon-game.sh
+
+denormalized-view: data/joined_game.csv
+	@xsv stats data/joined_game.csv | xsv select field,type,min | xsv table
