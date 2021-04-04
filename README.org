@@ -136,6 +136,35 @@ The determination of the hash and sort keys will be driven by the following:
    : "dragon_name_str"
    : "game_id_str"
 
+ * Queries
+
+   #+begin_src sql
+     -- Show all dragons in the game
+     SELECT * FROM Game g, Dragon d, DragonFamily f, DragonBonusAttack a;
+
+     -- Return all the dragons that can spew acid
+     SELECT * FROM Game g, Dragon d, DragonFamily f, DragonBonusAttack a WHERE a.description = "spews acid";
+
+     -- Return all dragons that are green
+     SELECT * FROM Game g, Dragon d, DragonFamily f, DragonBonusAttack a WHERE f.description = "green";
+
+     -- Return the dragons in range attack order
+     SELECT * FROM Game g, Dragon d, DragonFamily f, DragonBonusAttack a ORDER BY f.range_int;
+
+     -- Give me all the dragons that live in Arizona, USA
+     SELECT * FROM Game g, Dragon d, DragonFamily f, DragonBonusAttack a WHERE g.state_str = "arizona";
+   #+end_src
+
+* Operations
+
+- Backup
+- Monitoring
+- Global Tables
+- Logging
+- Tracing
+- Encryption
+- Access control
+
 * Resources
 
 - https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html

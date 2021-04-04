@@ -42,6 +42,16 @@ get-all-labs:
 	https://s3.amazonaws.com/awsu-hosting/edx_dynamo/c9/dynamo-update/lab2.zip
 	wget \
 	https://s3.amazonaws.com/awsu-hosting/edx_dynamo/c9/dynamo-seed/lab3.zip
+	wget \
+	https://s3.amazonaws.com/awsu-hosting/edx_dynamo/c9/dynamo-monitor/lab4.zip
+	wget \
+	https://s3.amazonaws.com/awsu-hosting/edx_dynamo/c9/dynamo-members/lab5.zip
+	wget \
+	https://s3.amazonaws.com/awsu-hosting/edx_dynamo/c9/dynamo-secure/lab6.zip
+	wget \
+	https://s3.amazonaws.com/awsu-hosting/edx_dynamo/c9/dynamo-admin/lab7.zip
+	wget \
+	https://s3.amazonaws.com/awsu-hosting/edx_dynamo/c9/dynamo-single/lab8.zip
 
 setup: $(LAB_TARGET)
 
