@@ -4,9 +4,51 @@
 
 * Model
 
-  #+begin_src dot
+  #+begin_src dot :cache yes :file model.png :exports results
+    digraph G {
+            subgraph cluster_current_power {
+                    "game_id_str" -> {
+                            "current_endurance_int"
+                            "current_will_not_fight_credits_int"
+                            "dragon_name_str"
+                    }
+            }
 
+            subgraph cluster_bonus_attack {
+                    "breath_attack_str" -> {
+                            "description_str"
+                            "extra_damage_int"
+                            "range_int"
+                    }
+            }
+
+            subgraph cluster_family {
+                    "family_str" -> {
+                            "breath_attack_str"
+                            "damage_modifier_int"
+                            "familly_description_str"
+                            "protection_modifier_int"
+                    }
+            }
+
+            subgraph cluster_stats {
+                    "dragon_name_str" -> {
+                            "damage_int"
+                            "dragon_description_str"
+                            "family_str"
+                            "location_city_str"
+                            "location_country_str"
+                            "location_neighborhood_str"
+                            "location_state_str"
+                            "protection_int"
+                    }
+            }
+    }
   #+end_src
+
+  #+RESULTS[ae44bf3b2029a726b4f19946c71516fedccf4ec3]:
+  [[file:model.png]]
+
 * Usage
 
 The determination of the hash and sort keys will be driven by the following:
@@ -16,47 +58,65 @@ The determination of the hash and sort keys will be driven by the following:
 
 ** Dragon
 
-   #+begin_src sh
+   #+begin_src sh :results output drawer
      jq '.[0]|keys[]' lab/resources/dragon_stats_one.json
    #+end_src
 
    #+RESULTS:
-   | damage_int                |
-   | description_str           |
-   | dragon_name_str           |
-   | family_str                |
-   | location_city_str         |
-   | location_country_str      |
-   | location_neighborhood_str |
-   | location_state_str        |
-   | protection_int            |
+   :results:
+   "damage_int"
+   "description_str"
+   "dragon_name_str"
+   "family_str"
+   "location_city_str"
+   "location_country_str"
+   "location_neighborhood_str"
+   "location_state_str"
+   "protection_int"
+   :end:
 
 ** Family
 
-   #+begin_src sh
+   #+begin_src sh :results output drawer
      jq '.[0]|keys[]' lab/resources/dragon_family.json
    #+end_src
 
    #+RESULTS:
-   | breath_attack_str       |
-   | damage_modifier_int     |
-   | description_str         |
-   | family_str              |
-   | protection_modifier_int |
+   :results:
+   "breath_attack_str"
+   "damage_modifier_int"
+   "description_str"
+   "family_str"
+   "protection_modifier_int"
+   :end:
 
 ** Attack
 
-   #+begin_src sh
+   #+begin_src sh :results output drawer
      jq '.[0]|keys[]' lab/resources/dragon_bonus_attack.json
    #+end_src
 
    #+RESULTS:
-   | breath_attack_str |
-   | description_str   |
-   | extra_damage_int  |
-   | range_int         |
+   :results:
+   "breath_attack_str"
+   "description_str"
+   "extra_damage_int"
+   "range_int"
+   :end:
 
 ** Game
+
+   #+begin_src sh :results output drawer
+     jq '.[0]|keys[]' lab/resources/dragon_current_power.json
+   #+end_src
+
+   #+RESULTS:
+   :results:
+   "current_endurance_int"
+   "current_will_not_fight_credits_int"
+   "dragon_name_str"
+   "game_id_str"
+   :end:
 
 * Resources
 
