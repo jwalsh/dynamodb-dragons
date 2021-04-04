@@ -1,46 +1,47 @@
 digraph G {
-
-subgraph cluster_current_power {
-        "game_id_str" -> {
-                "current_endurance_int"
-                "current_will_not_fight_credits_int"
-                "dragon_name_str"
+        graph [fontname = "Handlee"];
+        node [fontname = "Handlee"];
+        edge [fontname = "Handlee"];
+        subgraph cluster_current_power {
+                color=blue;
+                "game_id_str" [color=pink];
+                "game_id_str" -> {
+                        "current_endurance_int"
+                        "current_will_not_fight_credits_int"
+                        "dragon_name_str"
+                }
         }
-}
-
-
-subgraph cluster_bonus_attack {
-        "breath_attack_str" -> {
-                "description_str"
-                "extra_damage_int"
-                "range_int"
+        subgraph cluster_bonus_attack {
+                color=red;
+                "breath_attack_str" [color=pink];
+                "breath_attack_str" -> {
+                        "description_str"
+                        "extra_damage_int"
+                        "range_int"
+                }
         }
-}
-
-
-
-subgraph cluster_family {
-        "family_str" -> {
-                "breath_attack_str"
-                "damage_modifier_int"
-                "familly_description_str"
-                "protection_modifier_int"
+        subgraph cluster_family {
+                color=green;
+                "family_str" [color=pink];
+                "family_str" -> {
+                        "breath_attack_str"
+                        "damage_modifier_int"
+                        "familly_description_str"
+                        "protection_modifier_int"
+                }
         }
-}
-
-
-subgraph cluster_stats {
-        "dragon_name_str" -> {
-                "damage_int"
-                "dragon_description_str"
-                "family_str"
-                "location_city_str"
-                "location_country_str"
-                "location_neighborhood_str"
-                "location_state_str"
-                "protection_int"
+        subgraph cluster_stats {
+                color=lightgrey;
+                "dragon_name_str" [color=pink];
+                "dragon_name_str" -> {
+                        "damage_int"
+                        "dragon_description_str"
+                        "family_str"
+                        "location_city_str"
+                        "location_country_str"
+                        "location_neighborhood_str"
+                        "location_state_str"
+                        "protection_int"
+                }
         }
-}
-
-
 }

@@ -71,6 +71,9 @@ check-setup:
 
 
 # Lab 3: Dragons
+model.png: model.dot
+	@dot -Tpng model.dot -o model.png
+
 lab3.create-multiple-tables:
 	node lab3/solution/create_multiple_tables.js
 	$(MAKE) list-tables
