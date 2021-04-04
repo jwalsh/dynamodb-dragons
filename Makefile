@@ -30,7 +30,16 @@ get-gpg: get-tools
 $(LAB_TARGET):
 	wget \
 	https://s3.amazonaws.com/awsu-hosting/edx_dynamo/c9/dynamo-seed/lab3.zip
-	unzip lab3.zip
+	# unzip lab3.zip
+
+get-all-labs:
+	wget \
+	https://s3.amazonaws.com/awsu-hosting/edx_dynamo/c9/dynamo-create/lab1.zip
+	wget \
+	https://s3.amazonaws.com/awsu-hosting/edx_dynamo/c9/dynamo-update/lab2.zip
+	wget \
+	https://s3.amazonaws.com/awsu-hosting/edx_dynamo/c9/dynamo-seed/lab3.zip
+
 
 setup: $(LAB_TARGET)
 
@@ -44,15 +53,15 @@ list-tables:
 	aws dynamodb list-tables --endpoint-url http://localhost:8000
 
 create-multiple-tables:
-	node lab/solution/create_multiple_tables.js
+	node lab3/solution/create_multiple_tables.js
 
 seed-dragons:
-	node lab/solution/seed_dragons.js
+	node lab3/solution/seed_dragons.js
 
 scan-dragons:
-	node lab/solution/scan_dragons.js
+	node lab3/solution/scan_dragons.js
 
-data/denomalize-dragon-game.csv: $(wildcard lab/resources/*.json)
+data/denomalize-dragon-game.csv: $(wildcard lab3/resources/*.json)
 	./scripts/denomalize-dragon-game.sh
 
 denormalized-view: data/denomalize-dragon-game.csv

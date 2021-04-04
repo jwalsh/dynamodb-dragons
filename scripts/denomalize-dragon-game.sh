@@ -1,12 +1,13 @@
 #/bin/sh
 
 TMP=data
+LAB=lab3/resources
 mkdir -p $TMP
 
-for F in lab/resources/dragon_bonus_attack.json \
-             lab/resources/dragon_family.json \
-             lab/resources/dragon_stats_one.json \
-             lab/resources/dragon_current_power.json
+for F in ${LAB}/dragon_bonus_attack.json \
+             ${LAB}/dragon_family.json \
+             ${LAB}/dragon_stats_one.json \
+             ${LAB}/dragon_current_power.json
 do
     BASENAME=$(basename $F .json)
     CSV=${TMP}/${BASENAME}.csv
