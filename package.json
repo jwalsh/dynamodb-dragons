@@ -1,31 +1,33 @@
 {
-  "name": "dynamodb-dragons",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "directories": {
-    "lib": "lib"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jwalsh/dynamodb-dragons.git"
-  },
-  "bugs": {
-    "url": "https://github.com/jwalsh/dynamodb-dragons/issues"
-  },
-  "homepage": "https://github.com/jwalsh/dynamodb-dragons#readme",
-  "description": "",
-  "dependencies": {
-    "@aws-sdk/client-dynamodb": "3.11.0",
-    "aws-sdk": "2.879.0",
-    "md5": "2.3.0"
-  },
-  "devDependencies": {
-    "@types/node": "14.14.37",
-    "typescript": "4.2.3"
-  }
+    "name": "dynamodb-dragons",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "tslint": "tslint -c tslint.json 'src/**/*.ts'"
+    },
+    "author": "",
+    "license": "ISC",
+    "directories": {
+        "lib": "lib"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jwalsh/dynamodb-dragons.git"
+    },
+    "bugs": {
+        "url": "https://github.com/jwalsh/dynamodb-dragons/issues"
+    },
+    "homepage": "https://github.com/jwalsh/dynamodb-dragons#readme",
+    "description": "",
+    "dependencies": {
+        "@aws-sdk/client-dynamodb": "3.11.0",
+        "aws-sdk": "2.879.0",
+        "md5": "2.3.0"
+    },
+    "devDependencies": {
+        "@types/node": "14.14.37",
+        "tslint": "6.1.3",
+        "typescript": "4.2.3"
+    }
 }

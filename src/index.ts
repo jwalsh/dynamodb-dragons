@@ -19,7 +19,7 @@ client.listTables({}, (err, data) => {
     console.log(data);
 })
 
-var params = {
+const params = {
     ExpressionAttributeValues: {
         ":name": {
             S: "Atlas"
@@ -44,9 +44,9 @@ client.deleteItem({
      "dragon_name": {
        S: "Acme"
       }
-    }, 
+    },
     TableName: "dragon_stats"
-   }).then((output) => { 
+   }).then((output) => {
     console.log('deleteItem: Acme');
     console.log(output);
 }, console.error)
@@ -55,7 +55,7 @@ const updateItemInput = {
     ExpressionAttributeNames: {
         "#C": "location_city",
         "#S": "location_state",
-        "#Y": "year", // new 
+        "#Y": "year", // new
         "#P": "password" // new
     },
     ExpressionAttributeValues: {

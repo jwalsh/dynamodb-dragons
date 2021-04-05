@@ -55,6 +55,9 @@ get-all-labs:
 
 setup: $(LAB_TARGET)
 
+switch-worktree:
+	docker container prune
+
 
 # Local DynamoDB
 run-aws: ## get-tools
