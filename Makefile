@@ -64,7 +64,7 @@ run-aws: ## get-tools
 	docker-compose up
 
 list-tables: # 8000
-	aws dynamodb --endpoint-url http://localhost:8000 list-tables
+	aws dynamodb --region us-east-1 --endpoint-url http://localhost:8000 list-tables
 
 list-tables-lcl: # WIP 4566
 	awslocal dynamodb list-tables
@@ -98,6 +98,12 @@ denormalized-view: data/denomalize-dragon-game.csv
 
 
 # Other labs
+lab0.create-table:
+	npx ts-node src/user.ts
+
+lab0.write-users:
+	aws dynamodb  --region us-east-1 --endpoint-url http://localhost:8000  batch-write-item --request-items file://lab0/users.json
+
 lab1.list-tables:
 	$(MAKE) list-tables
 

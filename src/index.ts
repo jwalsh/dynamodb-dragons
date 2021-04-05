@@ -30,7 +30,9 @@ export interface DragonGame {
   description: string;
   game_id: string;
 }
-
+export interface Cat {
+  name: string;
+}
 export interface Dragon {
   damage: number;
   description: string;
@@ -41,7 +43,8 @@ export interface Dragon {
   location_neighborhood: string;
   location_state: string;
   protection: number;
-  todos: (string | number)[];
+  todos?: (string | number)[];
+  friends?: (Dragon | Cat)[];
 }
 
 export enum Family {
@@ -172,6 +175,39 @@ client.putItem({
   console.log(data);
 });
 
+// https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_AttributeValue.html
+const mockAttributeValue = {
+  dataBinary: {
+    "B": "dGhpcyB0ZXh0IGlzIGJhc2U2NC1lbmNvZGVk"
+  },
+  dataBoolean: {
+    "BOOL": true
+  },
+  dataBinarySet: {
+    "BS": ["U3Vubnk=", "UmFpbnk=", "U25vd3k="]
+  },
+  dataList: {
+    "L": [{ "S": "Cookies" }, { "S": "Coffee" }, { "N", "3.14159"}]
+  },
+  dataMap: {
+    "M": { "Name": { "S": "Joe" }, "Age": { "N": "35" } }
+  },
+  dataNumber: {
+    "N": "123.45"
+  },
+  dataNumberSet: {
+    "NS": ["42.2", "-19", "7.5", "3.14"]
+  },
+  dataNull: {
+    "NULL": true
+  },
+  dataString: {
+    "S": "Hello"
+  },
+  dataStringSet: {
+    "SS": ["Giraffe", "Hippo", "Zebra"]
+  }
+}
 
 // Delete
 const deleteItemInput: DeleteItemInput = {
