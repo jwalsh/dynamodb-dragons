@@ -64,10 +64,10 @@ const updateItemInput = {
             S: "wallingford"
         },
         ":c": {
-            S: "Seattle"
+            S: "seattle"
         },
         ":s": {
-            S: "Washington"
+            S: "washington"
         },
         ":y": {
             N: "2021"
