@@ -41,6 +41,7 @@ export interface Dragon {
   location_neighborhood: string;
   location_state: string;
   protection: number;
+  todos: (string | number)[];
 }
 
 export enum Family {
@@ -144,8 +145,10 @@ const dragonLorem: Dragon = {
   location_state: "massachusetts",
   location_country: LocationCountry.Usa,
   protection: 1,
+  todos: ['first', 'second'],
 };
-console.log("Lorem", dragonLorem);
+const marshalledDragonLorem = marshall(dragonLorem);
+console.log("Lorem", marshalledDragonLorem);
 
 const putItemInput: PutItemInput = {
   Item: {
