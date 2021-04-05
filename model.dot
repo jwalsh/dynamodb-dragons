@@ -26,7 +26,7 @@ digraph G {
                 "family_str" -> {
                         "breath_attack_str"
                         "damage_modifier_int"
-                        "familly_description_str"
+                        "family_description_str"
                         "protection_modifier_int"
                 }
         }
