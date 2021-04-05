@@ -23,6 +23,7 @@
     "description": "",
     "dependencies": {
         "@aws-sdk/client-dynamodb": "3.11.0",
+        "@aws-sdk/util-dynamodb": "^3.11.0",
         "aws-sdk": "2.879.0",
         "md5": "2.3.0"
     },

@@ -6,6 +6,8 @@ import {
   DeleteItemInput,
   UpdateItemInput,
 } from "@aws-sdk/client-dynamodb";
+import { marshall } from '@aws-sdk/util-dynamodb';
+
 // import { md5 } from "md5";
 
 (async () => {
@@ -158,6 +160,15 @@ client.putItem(putItemInput).then((data) => {
   console.log("putItem: Lorem");
   console.log(data);
 }, console.error);
+
+client.putItem({
+  TableName: "dragon_stats",
+  Item: marshall(dragonLorem)
+}).then((data) => {
+  console.log('marshalled putItem: Lorem');
+  console.log(data);
+});
+
 
 // Delete
 const deleteItemInput: DeleteItemInput = {
