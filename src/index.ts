@@ -1,5 +1,6 @@
 // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html
-import { DynamoDB } from "@aws-sdk/client-dynamodb"
+import { DynamoDB } from "@aws-sdk/client-dynamodb";
+import { md5 } from "md5";
 
 (async () => {
     console.log('DynamoDB')
@@ -32,3 +33,44 @@ client.query(params, (err, data) => {
     console.log('query: Atlas')
     console.log(data);
 })
+
+
+// client.putItem({}).then((data) => {
+//     console.log(data);
+// })
+
+const updateItemInput = {
+    ExpressionAttributeNames: {
+        "#C": "location_city",
+        "#S": "location_state",
+        "#Y": "year", // new 
+        "#P": "password" // new
+    },
+    ExpressionAttributeValues: {
+        ":c": {
+            S: "Seattle"
+        },
+        ":s": {
+            S: "Washington"
+        },
+        ":y": {
+            N: "2021"
+        },
+        ":p": {
+            S: "password"
+        }
+    },
+    Key: {
+        "dragon_name": {
+            S: "Acme"
+        }
+    },
+    ReturnValues: "ALL_NEW",
+    TableName: "dragon_stats",
+    UpdateExpression: "SET #C = :c, #S = :s, #Y = :y, #P = :p"
+};
+
+client.updateItem(updateItemInput, {}).then((output) => {
+    console.log('updateItem: Atlas')
+    console.log(output);
+}, (err) => console.log(err));
