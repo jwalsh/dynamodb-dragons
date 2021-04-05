@@ -41,24 +41,28 @@ client.query(params, (err, data) => {
 
 client.deleteItem({
     Key: {
-     "dragon_name": {
-       S: "Acme"
-      }
+        "dragon_name": {
+            S: "Acme"
+        }
     },
     TableName: "dragon_stats"
-   }).then((output) => {
+}).then((output) => {
     console.log('deleteItem: Acme');
     console.log(output);
 }, console.error)
 
 const updateItemInput = {
     ExpressionAttributeNames: {
+        "#N": "location_neighborhood",
         "#C": "location_city",
         "#S": "location_state",
         "#Y": "year", // new
         "#P": "password" // new
     },
     ExpressionAttributeValues: {
+        ":n": {
+            S: "wallingford"
+        },
         ":c": {
             S: "Seattle"
         },
@@ -74,15 +78,15 @@ const updateItemInput = {
     },
     Key: {
         "dragon_name": {
-            S: "Atlas"
+            S: "Omnitrek"
         }
     },
     ReturnValues: "ALL_NEW",
     TableName: "dragon_stats",
-    UpdateExpression: "SET #C = :c, #S = :s, #Y = :y, #P = :p"
+    UpdateExpression: "SET #N = :n, #C = :c, #S = :s, #Y = :y, #P = :p"
 };
 
 client.updateItem(updateItemInput, {}).then((output) => {
-    console.log('updateItem: Atlas')
+    console.log('updateItem: Omnitrek')
     console.log(output);
 }, (err) => console.log(err));
