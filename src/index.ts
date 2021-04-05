@@ -6,7 +6,7 @@ import {
   DeleteItemInput,
   UpdateItemInput,
 } from "@aws-sdk/client-dynamodb";
-import { md5 } from "md5";
+// import { md5 } from "md5";
 
 (async () => {
   console.log("DynamoDB");
