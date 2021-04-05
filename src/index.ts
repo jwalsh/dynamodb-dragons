@@ -39,6 +39,18 @@ client.query(params, (err, data) => {
 //     console.log(data);
 // })
 
+client.deleteItem({
+    Key: {
+     "dragon_name": {
+       S: "Acme"
+      }
+    }, 
+    TableName: "dragon_stats"
+   }).then((output) => { 
+    console.log('deleteItem: Acme');
+    console.log(output);
+}, console.error)
+
 const updateItemInput = {
     ExpressionAttributeNames: {
         "#C": "location_city",
@@ -62,7 +74,7 @@ const updateItemInput = {
     },
     Key: {
         "dragon_name": {
-            S: "Acme"
+            S: "Atlas"
         }
     },
     ReturnValues: "ALL_NEW",
