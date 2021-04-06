@@ -111,3 +111,47 @@ client
     ],
   })
   .then(console.log, console.error);
+
+client
+  .createTable({
+    AttributeDefinitions: [
+      {
+        AttributeName: "Deleted",
+        AttributeType: "S",
+      },
+      {
+        AttributeName: "Id",
+        AttributeType: "S",
+      },
+    ],
+    GlobalSecondaryIndexes: [
+      {
+        IndexName: "Deleted-index",
+        Projection: {
+          ProjectionType: "ALL",
+        },
+        ProvisionedThroughput: {
+          WriteCapacityUnits: 5,
+          ReadCapacityUnits: 5,
+        },
+        KeySchema: [
+          {
+            KeyType: "HASH",
+            AttributeName: "Deleted",
+          },
+        ],
+      },
+    ],
+    ProvisionedThroughput: {
+      WriteCapacityUnits: 5,
+      ReadCapacityUnits: 5,
+    },
+    TableName: "Items",
+    KeySchema: [
+      {
+        KeyType: "HASH",
+        AttributeName: "Id",
+      },
+    ],
+  })
+  .then(console.log, console.error);

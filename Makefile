@@ -101,6 +101,9 @@ denormalized-view: data/denomalize-dragon-game.csv
 lab0.create-table:
 	npx ts-node src/user.ts
 
+lab0.create-items-table:
+	npx ts-node src/adjacency.ts
+
 lab0.write-users:
 	aws dynamodb  --region us-east-1 --endpoint-url http://localhost:8000  batch-write-item --request-items file://lab0/users.json
 
