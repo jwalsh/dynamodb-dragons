@@ -72,6 +72,19 @@ list-tables-lcl: # WIP 4566
 check-setup:
 	npx ts-node src/index.ts
 
+update-continuous-backups: # WIP
+	awslocal dynamodb update-continuous-backups \
+	--table-name MusicCollection \
+	--point-in-time-recovery-specification PointInTimeRecoveryEnabled=True
+
+export-table-to-point-in-time: # WIP
+	awslocal dynamodb export-table-to-point-in-time \
+	--table-arn arn:aws:dynamodb:us-west-2:123456789012:table/MusicCollection \
+	--s3-bucket ddb-export-musiccollection \
+	--s3-prefix 2020-Nov \
+	--export-format DYNAMODB_JSON \
+	--export-time 1604632434 \
+	--s3-sse-algorithm AES256
 
 # Lab 3: Dragons
 model.png: model.dot
@@ -87,8 +100,14 @@ lab3.seed-dragons: # create-multiple-tables
 lab3.scan-dragons: # seed-dragons
 	node lab3/solution/scan_dragons.js
 
+lab3.run: lab3.create-multiple-tables lab3.seed-dragons lab3.scan-dragons
+
 lab3.query-dragon-stats:
-	@./scripts/query-dragon-stats.sh | jq
+	aws dynamodb --endpoint-url http://localhost:8000 \
+	query \
+	--table-name dragon_stats \
+	--key-condition-expression "dragon_name = :name" \
+	--expression-attribute-values  '{":name":{"S":"Atlas"}}' | jq '.Items[0]'
 
 data/denomalize-dragon-game.csv: $(wildcard lab3/resources/*.json) scripts/denomalize-dragon-game.sh
 	@./scripts/denomalize-dragon-game.sh
@@ -96,6 +115,11 @@ data/denomalize-dragon-game.csv: $(wildcard lab3/resources/*.json) scripts/denom
 denormalized-view: data/denomalize-dragon-game.csv
 	@xsv stats data/denomalize-dragon-game.csv | xsv select field,type,min | xsv table
 
+lab3.clean: list-tables
+	aws --endpoint-url http://localhost:8000 --region us-east-1 dynamodb delete-table --table-name dragon_bonus_attack || true
+	aws --endpoint-url http://localhost:8000 --region us-east-1 dynamodb delete-table --table-name dragon_current_power || true
+	aws --endpoint-url http://localhost:8000 --region us-east-1 dynamodb delete-table --table-name dragon_family || true
+	aws --endpoint-url http://localhost:8000 --region us-east-1 dynamodb delete-table --table-name dragon_stats || true
 
 # Other labs
 lab0.create-table:
@@ -112,3 +136,5 @@ lab1.list-tables:
 
 lab1.create-table:
 	./scripts/lab1-create-table-music.sh
+
+.FORCE:
