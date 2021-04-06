@@ -1,5 +1,5 @@
 # verbs, nouns, pronouns, adverbs, adjectives, prepositions, conjunctions, and interjections
-aws dynamodb --endpoint-url http://localhost:8000 \
+aws dynamodb --region localhost --endpoint-url http://localhost:8000 \
     create-table \
     --table-name Dictionary \
     --attribute-definitions AttributeName=Word,AttributeType=S AttributeName=Part,AttributeType=S AttributeName=Definition,AttributeType=S \

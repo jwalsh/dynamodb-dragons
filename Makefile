@@ -64,7 +64,7 @@ run-aws: ## get-tools
 	docker-compose up
 
 list-tables: # 8000
-	aws dynamodb --region us-east-1 --endpoint-url http://localhost:8000 list-tables
+	aws dynamodb --region localhost --endpoint-url http://localhost:8000 list-tables
 
 list-tables-lcl: # WIP 4566
 	awslocal dynamodb list-tables
@@ -116,20 +116,23 @@ denormalized-view: data/denomalize-dragon-game.csv
 	@xsv stats data/denomalize-dragon-game.csv | xsv select field,type,min | xsv table
 
 lab3.clean: list-tables
-	aws --endpoint-url http://localhost:8000 --region us-east-1 dynamodb delete-table --table-name dragon_bonus_attack || true
-	aws --endpoint-url http://localhost:8000 --region us-east-1 dynamodb delete-table --table-name dragon_current_power || true
-	aws --endpoint-url http://localhost:8000 --region us-east-1 dynamodb delete-table --table-name dragon_family || true
-	aws --endpoint-url http://localhost:8000 --region us-east-1 dynamodb delete-table --table-name dragon_stats || true
+	aws --endpoint-url http://localhost:8000 --region localhost dynamodb delete-table --table-name dragon_bonus_attack || true
+	aws --endpoint-url http://localhost:8000 --region localhost dynamodb delete-table --table-name dragon_current_power || true
+	aws --endpoint-url http://localhost:8000 --region localhost dynamodb delete-table --table-name dragon_family || true
+	aws --endpoint-url http://localhost:8000 --region localhost dynamodb delete-table --table-name dragon_stats || true
 
 # Other labs
 lab0.create-table:
 	npx ts-node src/user.ts
 
+create-user-profiles:
+	$(MAKE) lab0.create-table
+
 lab0.create-modeling-table:
 	npx ts-node src/modeling.ts
 
 lab0.write-users:
-	aws dynamodb  --region us-east-1 --endpoint-url http://localhost:8000  batch-write-item --request-items file://lab0/users.json
+	aws dynamodb --region localhost --endpoint-url http://localhost:8000  batch-write-item --request-items file://lab0/users.json
 
 lab1.list-tables:
 	$(MAKE) list-tables

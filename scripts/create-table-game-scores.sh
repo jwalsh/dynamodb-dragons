@@ -1,4 +1,4 @@
-aws dynamodb  --endpoint-url http://localhost:8000 \
+aws dynamodb  --region localhost --endpoint-url http://localhost:8000 \
     create-table \
     --table-name GameScores \
     --attribute-definitions AttributeName=UserId,AttributeType=S AttributeName=GameTitle,AttributeType=S AttributeName=TopScore,AttributeType=N \

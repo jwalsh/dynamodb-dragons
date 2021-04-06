@@ -1,4 +1,4 @@
-aws dynamodb --endpoint-url http://localhost:8000 \
+aws dynamodb --region localhost --endpoint-url http://localhost:8000 \
     create-table \
     --table-name Music \
     --attribute-definitions AttributeName=Artist,AttributeType=S AttributeName=SongTitle,AttributeType=S \
