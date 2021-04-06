@@ -17,6 +17,7 @@ const client = new DynamoDB({
 
 console.log(client.config.endpoint());
 
+// https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-modeling-nosql-B.html
 client
   .createTable({
     TableName: "Items",
