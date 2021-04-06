@@ -6,7 +6,7 @@ import {
   DeleteItemInput,
   UpdateItemInput,
 } from "@aws-sdk/client-dynamodb";
-import { marshall } from '@aws-sdk/util-dynamodb';
+import { marshall } from "@aws-sdk/util-dynamodb";
 
 // import { md5 } from "md5";
 
@@ -148,7 +148,7 @@ const dragonLorem: Dragon = {
   location_state: "massachusetts",
   location_country: LocationCountry.Usa,
   protection: 1,
-  todos: ['first', 'second'],
+  todos: ["first", "second"],
 };
 const marshalledDragonLorem = marshall(dragonLorem);
 console.log("Lorem", marshalledDragonLorem);
@@ -167,47 +167,49 @@ client.putItem(putItemInput).then((data) => {
   console.log(data);
 }, console.error);
 
-client.putItem({
-  TableName: "dragon_stats",
-  Item: marshall(dragonLorem)
-}).then((data) => {
-  console.log('marshalled putItem: Lorem');
-  console.log(data);
-});
+client
+  .putItem({
+    TableName: "dragon_stats",
+    Item: marshall(dragonLorem),
+  })
+  .then((data) => {
+    console.log("marshalled putItem: Lorem");
+    console.log(data);
+  });
 
 // https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_AttributeValue.html
 const mockAttributeValue = {
   dataBinary: {
-    "B": "dGhpcyB0ZXh0IGlzIGJhc2U2NC1lbmNvZGVk"
+    B: "dGhpcyB0ZXh0IGlzIGJhc2U2NC1lbmNvZGVk",
   },
   dataBoolean: {
-    "BOOL": true
+    BOOL: true,
   },
   dataBinarySet: {
-    "BS": ["U3Vubnk=", "UmFpbnk=", "U25vd3k="]
+    BS: ["U3Vubnk=", "UmFpbnk=", "U25vd3k="],
   },
   dataList: {
-    "L": [{ "S": "Cookies" }, { "S": "Coffee" }, { "N", "3.14159"}]
+    L: [{ S: "Cookies" }, { S: "Coffee" }, { N: "3.14159" }],
   },
   dataMap: {
-    "M": { "Name": { "S": "Joe" }, "Age": { "N": "35" } }
+    M: { Name: { S: "Joe" }, Age: { N: "35" } },
   },
   dataNumber: {
-    "N": "123.45"
+    N: "123.45",
   },
   dataNumberSet: {
-    "NS": ["42.2", "-19", "7.5", "3.14"]
+    NS: ["42.2", "-19", "7.5", "3.14"],
   },
   dataNull: {
-    "NULL": true
+    NULL: true,
   },
   dataString: {
-    "S": "Hello"
+    S: "Hello",
   },
   dataStringSet: {
-    "SS": ["Giraffe", "Hippo", "Zebra"]
-  }
-}
+    SS: ["Giraffe", "Hippo", "Zebra"],
+  },
+};
 
 // Delete
 const deleteItemInput: DeleteItemInput = {
