@@ -23,7 +23,11 @@ client.listTables({}, (err, data) => {
   console.log(data);
 });
 
-client
+const clean = client.deleteTable({
+  TableName: "Users",
+});
+
+const setup = client
   .createTable({
     TableName: "Users",
     AttributeDefinitions: [
@@ -44,12 +48,43 @@ client
   }, console.error);
 
 interface User {
-  email: string;
+  readonly email: string;
   password: string;
-  access: string[];
-  todos: string[];
-  age: number;
+  fullName?: string;
+  createdDate: Date;
+  access?: string[];
+  todos?: string[];
+  age?: number;
 }
+
+class AppUser implements User {
+  createdDate = new Date();
+  todos = [];
+  access = [];
+  email;
+  password;
+  lastLogin = new Date();
+
+  constructor(emailInput: string, passwordInput: string, age?: number) {
+    this.email = emailInput.toLowerCase();
+    this.password = passwordInput.toUpperCase();
+  }
+
+  login(passwordInput: string) {
+    if (passwordInput.toUpperCase() == this.password) {
+      const lastLogin = new Date();
+      this.lastLogin = lastLogin;
+      // this.access.push(lastLogin.toString());
+    } else {
+      throw new Error("InvalidLogin");
+    }
+  }
+}
+
+const jason = new AppUser("j@wal.sh", "P@s5W0rd");
+console.log("AppUser", jason);
+// console.log(jason.login('password'));
+console.log(jason.login("P@s5W0rd"));
 
 client
   .putItem({
